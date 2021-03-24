@@ -1,0 +1,157 @@
+<odoo>
+  <data>
+
+
+
+<!-- 
+    <record id="view_form_book" model="ir.ui.view">
+      <field name="name">Book Form</field>
+      <field name="model">bibliotheque.book</field>
+      <field name="arch" type="xml">
+        <form string="Book">
+          <header>
+         
+            <button name="button_check_isbn" type="object" string="Check ISBN" />
+          </header>
+          <sheet>
+       
+            <group >
+                <field name="name" />
+                <field name="author_ids" widget="many2many_tags"/>
+                <field name="publisher_id" />
+                <field name="date_published" />
+                <field name="isbn" />
+                <field name="active" />
+                <field name="image" widget="image" /> 
+            </group>  
+          </sheet>  
+        </form>
+      </field>
+    </record>   
+
+
+    
+    <menuitem id="bibliotheque_menu" name="bibliotheque" />
+  
+ 
+    
+    <act_windows id="action_bibliotheque_book"
+      name= "bibliotheque Books"
+      res_model= "bibliotheque.book"
+      view_mode="tree,form"
+    />
+
+  
+    
+    <menuitem id="menu_bibliotheque_book"
+        name="Books"
+        action="action_bibliotheque_book"
+        parent="bibliotheque_menu"
+        
+    />   -->   
+
+
+
+    <record model="ir.ui.view" id="book_list_view">
+      <field name="name">Book list</field>
+      <field name="model">bibliotheque.book</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="isbn"/>
+          <field name="date_published"/>
+          <field name="active"/>
+         
+       
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="book_form_view">
+      <field name="name">Bibliotheque list</field>
+      <field name="model">bibliotheque.book</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+
+
+            <field name="name"/>
+            <field name="isbn"/>
+            <field name="date_published"/>
+            <field name="active"/>
+            <button string="Check isbn" type="object" name="button_check_isbn"></button>
+           
+          </group>
+          <separator string="authors"  />
+
+          <notebook>
+            <page string="author">
+              <field name="author_ids"/>
+            </page> 
+            <page string="publisher">
+              <field name="publisher_id"/>
+            </page>  
+          </notebook>  
+         </form> 
+      </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="bibliotheque.action_window">
+      <field name="name">bibliotheque window</field>
+      <field name="res_model">bibliotheque.bibliotheque</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="bibliotheque.action_server">
+      <field name="name">bibliotheque server</field>
+      <field name="model_id" ref="model_bibliotheque_bibliotheque"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <record model="ir.actions.act_window" id="book_action_window">
+      <field name="name">book window</field>
+      <field name="res_model">bibliotheque.book</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Bibliotheque" id="bibliotheque.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Books" id="bibliotheque_book_cat" parent="bibliotheque.menu_root"/>
+
+    <menuitem name="List of books" id="bibliotheque_book_list" parent="bibliotheque_book_cat" action="book_action_window"/>
+    <!-- 
+    <menuitem name="bibliotheque" id="bibliotheque.menu_root"  action="bibliotheque_form_view" /> -->
+    
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="bibliotheque.menu_1" parent="bibliotheque.menu_root"/>
+    <menuitem name="Menu 2" id="bibliotheque.menu_2" parent="bibliotheque.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="bibliotheque.menu_1_list" parent="bibliotheque.menu_1"
+              action="bibliotheque.action_window"/>
+    <menuitem name="Server to list" id="bibliotheque" parent="bibliotheque.menu_2"
+              action="bibliotheque.action_server"/>
+    -->
+  </data>
+</odoo>
