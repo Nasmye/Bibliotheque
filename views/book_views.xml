@@ -1,0 +1,66 @@
+
+
+<odoo>
+	<record model="ir.ui.view" id="book_list_view_extend">
+      <field name="name">Book list</field>
+      <field name="model">bibliotheque.book</field>
+      <field name="inherit_id" ref="bibliotheque.book_list_view" />
+      <field name="arch" type="xml">
+        
+        <!--   <xpath expr="//field[@name='date_published']" position="after">
+            <field name="is_available"/>
+          </xpath> -->
+          <field name="date_published" position="before">
+          	<field name="is_available"/>
+      	  </field>
+       
+        
+      </field>
+    </record>
+	
+    <record model="ir.ui.view" id="book_form_view_extend">
+      <field name="name">Bibliotheque list</field>
+      <field name="model">bibliotheque.book</field>
+      <field name="inherit_id" ref="bibliotheque.book_form_view" />
+      <field name="arch" type="xml">
+        
+        <!--     <xpath expr="//field[@name='date_published']" position="after">
+              <field name="is_available"/>
+            </xpath> -->
+
+
+          	<field name="date_published" position="after">
+            	<field name="is_available" />
+        	  </field>
+
+         
+      </field>
+    </record>
+
+
+<!-- 	<record model="ir.ui.view" id="book_form_view_extend">
+      <field name="name">Book : add Is Available? field</field>
+      <field name="model">bibliotheque.book</field>
+      <field name="inherit_id" ref="bibliotheque.book_form_view" />
+      <field name="arch" type="xml">
+        <field name="isbn" position="after"/>
+	    <field name="is_available"/>
+      </field>
+    </record> -->
+
+
+
+
+	<!-- <record id="book_form_view_extend" model="ir.ui.view">
+		<field name="name">Book : add Is Available? field</field>
+		<field name="model">bibliotheque.book</field>
+		<field name="inherit_id" ref="bibliotheque.book_form_view" />
+		 <field name="arch" type="xml">
+	        
+	          <field name="isbn" position="after"/>
+	          <field name="is_available"/>
+	           
+	     	
+	    </field>
+	</record>	 -->
+</odoo>	
