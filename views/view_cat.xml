@@ -1,0 +1,28 @@
+<odoo>
+	<record id="book_cat_list_view" model="ir.ui.view">
+		<field name="name">Book Category List</field>
+		<field name="model">bibliotheque.book.category</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="name" />
+					<field name="parent_id" />
+					<field name="child_ids" widget="many2many_tags"/>
+					<field name="highlighted_id"/>
+				</group>	
+			</form>	
+		</field>	
+	</record>	
+
+
+
+
+	<record model="ir.actions.act_window" id="book_cat_action_window">
+      <field name="name">Category window</field>
+      <field name="res_model">bibliotheque.book.category</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- menu categories -->
+
+    <menuitem name="Category Book" id="book_cat_list" parent="bibliotheque_book_cat" action="book_cat_action_window"/>		
+</odoo>	

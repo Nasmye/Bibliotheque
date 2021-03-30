@@ -61,7 +61,7 @@
           <field name="isbn"/>
           <field name="date_published"/>
           <field name="active"/>
-         
+
        
         </tree>
       </field>
@@ -82,6 +82,11 @@
             <field name="isbn"/>
             <field name="date_published"/>
             <field name="active"/>
+            <field name="book_type" />
+            <field name="note" />
+            <field name="descr"/>
+            <field name="price" />
+            <field name="last_borrow_date" />
             <button string="Check isbn" type="object" name="button_check_isbn"></button>
            
           </group>
@@ -99,6 +104,21 @@
       </field>
     </record>
     
+
+        <record model="ir.actions.act_window" id="book_action_window">
+      <field name="name">book window</field>
+      <field name="res_model">bibliotheque.book</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Bibliotheque" id="bibliotheque.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Books" id="bibliotheque_book_cat" parent="bibliotheque.menu_root" />
+    
+    <menuitem name="List of books" id="bibliotheque_book_list" parent="bibliotheque_book_cat" action="book_action_window"/>
     <!-- actions opening views on models -->
     <!--
     <record model="ir.actions.act_window" id="bibliotheque.action_window">
@@ -124,20 +144,13 @@
     </record>
     -->
 
-    <record model="ir.actions.act_window" id="book_action_window">
-      <field name="name">book window</field>
-      <field name="res_model">bibliotheque.book</field>
-      <field name="view_mode">tree,form</field>
-    </record>
 
-    <!-- Top menu item -->
-    <menuitem name="Bibliotheque" id="bibliotheque.menu_root"/>
 
-    <!-- menu categories -->
 
-    <menuitem name="Books" id="bibliotheque_book_cat" parent="bibliotheque.menu_root"/>
 
-    <menuitem name="List of books" id="bibliotheque_book_list" parent="bibliotheque_book_cat" action="book_action_window"/>
+
+
+
     <!-- 
     <menuitem name="bibliotheque" id="bibliotheque.menu_root"  action="bibliotheque_form_view" /> -->
     

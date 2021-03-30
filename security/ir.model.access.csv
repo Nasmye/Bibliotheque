@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_bibliotheque_book,access_bibliotheque_book,model_bibliotheque_book,base.group_user,1,1,1,1
+access_bibliotheque_book_category,access_bibliotheque_book_category,model_bibliotheque_book_category,base.group_user,1,1,1,0

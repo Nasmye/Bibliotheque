@@ -1,6 +1,16 @@
 <odoo>
     <data>
-        <!-- <template id="listing"> -->
+        <template id="listing" name="Book list">
+            <div id="wrap" class="container">
+                <h1>Books</h1>
+                <t t-foreach="books" t-as="book">
+                    <div class="row">
+                        <span t-field="book.name" />,
+                        <span t-field="book.date_published" />,
+                        <span t-field="book.publisher_id" />,
+                    </div>s
+                </t>
+            </div>    
         <!--   <ul> -->
         <!--     <li t-foreach="objects" t-as="object"> -->
         <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
@@ -17,6 +27,6 @@
         <!--       <dd><t t-esc="object[field]"/></dd> -->
         <!--     </t> -->
         <!--   </dl> -->
-        <!-- </template> -->
+        </template>
     </data>
 </odoo>
