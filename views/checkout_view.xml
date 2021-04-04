@@ -1,0 +1,120 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+      
+
+    <record model="ir.ui.view" id="bibliotheque_checkout_tree">
+      <field name="name">Checkout Tree</field>
+      <field name="model">bibliotheque.checkout</field>
+      <field name="arch" type="xml">
+        <tree>
+          
+              <field name="member_id"/>
+              <field name="request_date"/>
+           
+        </tree>
+      </field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="bibliotheque_checkout_list">
+      <field name="name">Checkout List</field>
+      <field name="model">bibliotheque.checkout</field>
+      <field name="arch" type="xml">
+        <form>
+
+          <header>
+            <field name="state" invisible="True" />
+            <button name="button_done"
+                    type="object"
+                    string="Return boks"
+                    states="open,cancel"
+                    class="oe_highlight" />
+            <field name="stage_id"
+                   widget="statusbar"
+                   clickable="True"
+                   options="{'fold_field': 'fold'} "/>
+          </header>
+
+          <sheet>
+            <group>
+              <field name="member_id"/>
+              <field name="request_date"/>
+              <field name="user_id"/>
+              <field name="line_ids">
+                <tree>
+                  <field name="checkout_id" />
+                  <field name="book_id" />
+
+
+                </tree>
+              </field>
+            </group>
+          </sheet>
+
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>          
+          </div>
+
+        </form>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="checkout_action_window">
+      <field name="name">Checkout Window</field>
+      <field name="res_model">bibliotheque.checkout</field>
+      <field name="view_mode">tree,form,activity,graph,pivot</field>
+    </record>
+    
+
+
+    <record model="ir.actions.act_window" id="checkout_stage_action_window">
+      <field name="name">Checkout Stage Window</field>
+      <field name="res_model">bibliotheque.checkout.stage</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!-- 
+    <record model="ir.actions.server" id="bibliotheque_checkout.action_window">
+      <field name="name">bibliotheque_checkout s</field>
+      <field name="model_id" ref="model_bibliotheque_checkout_bibliotheque_checkout"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record> -->
+    
+
+    <!-- Top menu item -->
+    
+    <!-- <menuitem name="bibliotheque_checkout" id="bibliotheque_checkout.menu_root"/> -->
+    
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="bibliotheque_checkout.menu_1" parent="bibliotheque_checkout.menu_root"/>
+    <menuitem name="Menu 2" id="bibliotheque_checkout.menu_2" parent="bibliotheque_checkout.menu_root"/>
+    -->
+    <!-- actions -->
+    
+    <menuitem name="Checkout" id="bibliotheque_checkout_list" parent="bibliotheque.menu_root"
+              action="checkout_action_window"/>
+              
+
+    <menuitem name="Checkout Stages" id="bibliotheque_checkout_stage" parent="bibliotheque.menu_root"
+              action="checkout_stage_action_window"/>  
+              <!--
+    <menuitem name="Server to list" id="bibliotheque_checkout" parent="bibliotheque_checkout.menu_2"
+              action="bibliotheque_checkout.action_server"/>
+    -->
+  </data>
+</odoo>

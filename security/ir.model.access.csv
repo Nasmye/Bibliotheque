@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bibliotheque_checkout,access_bibliotheque_checkout,model_bibliotheque_checkout,base.group_user,1,1,1,0
+access_bibliotheque_checkout_stage,access_bibliotheque_checkout_stage,model_bibliotheque_checkout_stage,base.group_user,1,1,1,0
+access_bibliotheque_checkout_line,access_bibliotheque_checkout_line,model_bibliotheque_checkout_line,base.group_user,1,1,1,0

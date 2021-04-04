@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+	<record model="bibliotheque.checkout.stage" id="stage_10" >
+		<fields name="name">Draft</fields>
+		<fields name="sequence">10</fields>
+		<fields name="state">new</fields>
+	</record>
+	<record id="stage_20" model="bibliotheque.checkout.stage">
+		<fields name="name">Borrowed</fields>
+		<fields name="sequence">20</fields>
+		<fields name="state">open</fields>
+	</record>
+	<record id="stage_90" model="bibliotheque.checkout.stage">
+		<fields name="name">Completed</fields>
+		<fields name="sequence">90</fields>
+		<fields name="state">done</fields>
+	</record>
+	<record id="stage_95" model="bibliotheque.checkout.stage">
+		<fields name="name">Cancelled</fields>
+		<fields name="sequence">95</fields>
+		<fields name="state">cancel</fields>
+	</record>	
+
+</odoo>	
